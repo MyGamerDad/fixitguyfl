@@ -1,1 +1,59 @@
+.t1 {
+  --panel: #14263b;
+  --heroink: #fffaf4;
+  --pop: #ffa264;
+}
 
+.brand {
+  align-items: center;
+  padding: 14px clamp(14px, 3vw, 28px);
+  background: #fff;
+  color: #14263b;
+  border: 1px solid #eaded0;
+  border-radius: 18px;
+}
+
+.brand-home {
+  display: block;
+  width: min(100%, 340px);
+}
+
+.brand-home img, .apparel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero {
+  background: radial-gradient(ellipse at bottom right, #294561, var(--panel) 68%);
+}
+
+.hero .cta:hover {
+  background: #ffbb91;
+}
+
+.apparel {
+  margin-top: 36px;
+  background: #14263b;
+  color: #fffaf4;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.apparel-copy {
+  padding: clamp(22px, 4vw, 50px);
+  border-top: 5px solid #e66321;
+}
+
+.apparel .eyebrow {
+  color: #ffa264;
+}
+
+.apparel h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin: .2em 0;
+}
+
+.apparel p {
+  margin: .6em 0 0;
+}
