@@ -25,6 +25,10 @@
 }
 
 .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(18px, 3vw, 42px);
   background: radial-gradient(ellipse at bottom right, #294561, var(--panel) 68%);
 }
 
@@ -56,4 +60,23 @@
 
 .apparel p {
   margin: .6em 0 0;
+}
+
+.hero-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: clamp(8px, 1vw, 16px);
+  background: #fff;
+  border-radius: 18px;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-logo {
+    max-width: 420px;
+  }
 }
