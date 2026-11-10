@@ -40,7 +40,28 @@ document.querySelectorAll('[data-group]').forEach(link=>link.addEventListener('c
  filter();
  groups.forEach(el=>el.open=group==='home'?['0','1','2'].includes(el.dataset.category):group==='tech'?['4','5'].includes(el.dataset.category):group==='engine'?el.dataset.category==='6':['3','7','8'].includes(el.dataset.category));
 }));
+
+const fileInputs=[...form.querySelectorAll('input[type=file]')];
+const uploadStatus=document.querySelector('#upload-status');
+function attachmentError(files){
+ const total=files.reduce((sum,file)=>sum+file.size,0);
+ if(files.some(file=>! /\.(jpe?g|png|pdf)$/i.test(file.name)))return 'Please choose only JPG, PNG, or PDF files.';
+ if(total>10000000)return 'Your attachments exceed 10 MB combined. Choose smaller files or use the sharing-link field.';
+ return '';
+}
+function validateAttachments(){
+ const files=fileInputs.flatMap(input=>[...input.files]);
+ const error=attachmentError(files);
+ fileInputs.forEach(input=>input.setCustomValidity(error));
+ uploadStatus.dataset.error=String(Boolean(error));
+ uploadStatus.textContent=error||(files.length?files.length+' file(s) selected · '+(files.reduce((sum,file)=>sum+file.size,0)/1000000).toFixed(2)+' MB of 10 MB':'No files selected.');
+ return !error;
+}
+fileInputs.forEach(input=>input.addEventListener('change',validateAttachments));
+document.querySelector('#clear-files').addEventListener('click',()=>{fileInputs.forEach(input=>input.value='');validateAttachments();});
 form.addEventListener('submit',event=>{
+ if(!validateAttachments()){event.preventDefault();form.reportValidity();return;}
+
  const status=document.querySelector('#contact-status');
  if(!form.elements.customer.value.trim()||!form.elements.details.value.trim()){
   event.preventDefault();status.hidden=false;status.textContent='Please enter your name and describe the services you need.';return;

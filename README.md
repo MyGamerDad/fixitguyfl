@@ -20,3 +20,8 @@ Serve this directory with a static HTTP server, for example `python -m http.serv
 
 ## Validation
 Check desktop and mobile layout, service search/category filters, selecting and clearing tasks, navigation, required fields and form destination. Publishing occurs when the deployment branch is updated.
+
+## Project attachments and team estimates
+The quote form uses a native multipart POST to FormSubmit.co. Three optional file inputs accept JPG, PNG, and PDF files. Browser validation blocks unsupported extensions and combined files above 10,000,000 bytes; FormSubmit enforces its own upload limits. File type filtering is a convenience, not a security scan. Treat received attachments as untrusted. Customers may instead supply a viewing link for larger files. Files are sent through FormSubmit, not stored in this public repository. Confirm attachment delivery with a real owner-approved submission; do not rely on FormSubmit's archive as an attachment backup.
+
+The team section describes subcontractor availability and estimate requests. It does not assert any specific license, insurance, or permit status. Confirm scope and professional requirements before accepting work.
